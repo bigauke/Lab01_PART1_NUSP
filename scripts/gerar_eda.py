@@ -15,6 +15,11 @@ def gerar_eda():
 
     md_linhas = ["# Análise Exploratória - Camada Silver\n\n"]
 
+    md_linhas.append("## Estatísticas Descritivas (Pagamentos)\n")
+    md_linhas.append("```text\n" + df_payments.describe().to_string() + "\n```\n\n")
+    md_linhas.append("## Contagem de Valores Nulos (Pedidos)\n")
+    md_linhas.append("```text\n" + df_orders.isnull().sum().to_string() + "\n```\n\n")
+
     # 1. Status
     plt.figure(figsize=(8, 4))
     df_orders['order_status'].value_counts().plot(kind='bar', color='steelblue')
